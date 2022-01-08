@@ -1,7 +1,7 @@
-package com.example.youngnrich.config
+package com.example.afreecatv_pre_assignment.config
 
-import com.example.youngnrich.config.ApplicationClass.Companion.X_ACCESS_TOKEN
-import com.example.youngnrich.config.ApplicationClass.Companion.sSharedPreferences
+import com.example.afreecatv_pre_assignment.config.ApplicationClass.Companion.X_ACCESS_TOKEN
+import com.example.afreecatv_pre_assignment.config.ApplicationClass.Companion.sSharedPreferences
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

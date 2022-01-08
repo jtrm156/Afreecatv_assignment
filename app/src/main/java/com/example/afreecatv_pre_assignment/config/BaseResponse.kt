@@ -1,4 +1,4 @@
-package com.example.youngnrich.config
+package com.example.afreecatv_pre_assignment.config
 
 import com.google.gson.annotations.SerializedName
 

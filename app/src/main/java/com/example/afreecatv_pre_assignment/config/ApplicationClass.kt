@@ -1,4 +1,4 @@
-package com.example.youngnrich.config
+package com.example.afreecatv_pre_assignment.config
 
 import android.app.Activity
 import android.app.Application
