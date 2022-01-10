@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.module.AppGlideModule
 import com.example.afreecatv_pre_assignment.databinding.RepositoryItemBinding
 import com.example.afreecatv_pre_assignment.databinding.RepositoryLoadingBinding
+
+@GlideModule
+class MyGlide : AppGlideModule()
 
 class SearchListAdapter(private val context: Context, var SearchArrayList: MutableList<searchlist>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -21,6 +26,7 @@ class SearchListAdapter(private val context: Context, var SearchArrayList: Mutab
     fun setList(searchlist: MutableList<searchlist>){
         SearchArrayList.addAll(searchlist)
         SearchArrayList.add(searchlist("","","",2))
+        notifyDataSetChanged()
     }
     fun deleteLoading(){
         SearchArrayList.removeAt(SearchArrayList.lastIndex)

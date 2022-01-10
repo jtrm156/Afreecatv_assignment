@@ -12,8 +12,8 @@ class SearchService(val view: SearchActivityView) {
                page: Int){
         val searchRetrofitInterface = ApplicationClass.sRetrofit.create(SearchRetrofitInterface::class.java)
         searchRetrofitInterface.search(q,per_page,page).enqueue(object : Callback<SearchResponse> {
-            override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-                view.onGet_repositories_Success(response.body() as SearchResponse)
+            override fun onResponse(call: Call<SearchResponse>, response : Response<SearchResponse>) {
+                view.onGet_repositories_Success((response.body() as SearchResponse))
             }
 
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {

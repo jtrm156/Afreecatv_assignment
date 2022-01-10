@@ -23,12 +23,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val q = sSharedPreferences.getString("q",null).toString()
+        SearchService(this).search(q, 10, page)
 
-        SearchService(this).search(q,10, page)
-
-        val searchlistAdapter = SearchListAdapter(activity as SearchActivity,searchList)
+        val searchlistAdapter = SearchListAdapter(activity as SearchActivity, searchList)
         binding.searchRecycle1.adapter = searchlistAdapter
 
         val layout = LinearLayoutManagerWrapper(activity as SearchActivity, LinearLayoutManager.VERTICAL, false)
@@ -41,29 +39,36 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                 super.onScrolled(recyclerView, dx, dy)
 
                 val lastVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition() // 화면에 보이는 마지막 아이템의 position
-                val itemTotalCount = recyclerView.adapter!!.itemCount - 1 // 어댑터에 등록된 아이템의 총 개수 -1
+                val itemTotalCount = recyclerView.adapter!!.itemCount -1 // 어댑터에 등록된 아이템의 총 개수 -1
 
                 // 스크롤이 끝에 도달했는지 확인
-                if (lastVisibleItemPosition == itemTotalCount ) {
-                    if (page != 10) {
+                if (!binding.searchRecycle1.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
+                    if (page == 11) {
+                        val msg = Toast.makeText(activity,"페이지 끝입니다.", Toast.LENGTH_SHORT)
+                        msg.show()
+                    }
+                    else {
                         val handler = android.os.Handler()
                         handler.postDelayed({
+                            val number = searchlistAdapter.itemCount
+
                             searchList.removeAt(searchList.lastIndex)
+                            Log.d("scrollinng", "vertical")
 
                             get_Page()
 
-                            SearchService(this).search(q,10, page)
-                            searchlistAdapter.notifyItemInserted(searchList.lastIndex+1)
+                            SearchService(this).search(q, 10, page)
+                            searchlistAdapter.notifyItemInserted(searchList.lastIndex + 2)
                         },1000)
                     }
                 }
             }
 
             override fun onGet_repositories_Success(response: SearchResponse) {
+
                 val index = response.items.size
-                var t1 = Toast.makeText(activity as SearchActivity, "${index}", Toast.LENGTH_SHORT)
-                t1.show()
-                for (i in 0 .. index-1) {
+
+                for (i in 0 .. index -1) {
                     var full_name = response.items[i].full_name
                     var avatar_url = response.items[i].owner.avatar_url
                     var language = response.items[i].language
