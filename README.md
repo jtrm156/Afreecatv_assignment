@@ -1,7 +1,7 @@
 
 # - Afreecatv_assignment -
 
-###<예시 영상>
+## 📱 예시 영상
 
 https://www.youtube.com/watch?v=mKoRNabB3zk
 
@@ -54,12 +54,14 @@ https://www.youtube.com/watch?v=mKoRNabB3zk
       "full_name": "dtrupenn/Tetris",
       "owner": {
         "avatar_url": "https://secure.gravatar.com/avatar/e7956084e75f239de85d3a31bc172ace?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png"
-				...
+	...
       },
-			"language": "kotlin"
-			...
+	"language": "kotlin"
+	...
     }
   ]
 }
 ```
+
+
 ***
