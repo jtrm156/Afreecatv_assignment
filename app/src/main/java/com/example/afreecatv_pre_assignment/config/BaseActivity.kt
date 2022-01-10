@@ -33,7 +33,5 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (isFinishing) {
-        }
     }
 }

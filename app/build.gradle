@@ -10,6 +10,10 @@ android {
         enabled = true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.example.afreecatv_pre_assignment"
         minSdk 24
@@ -74,4 +78,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
