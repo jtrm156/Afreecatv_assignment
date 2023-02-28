@@ -34,4 +34,13 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
     override fun onBackPressed() {
         super.onBackPressed()
     }
+
+    fun showLoadingDialog(context : Context) {
+        mLoadingDialog = LoadingDialog(context)
+        mLoadingDialog.show()
+    }
+
+    fun dismissLoadingDialog() {
+        mLoadingDialog.dismiss()
+    }
 }

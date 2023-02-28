@@ -19,11 +19,11 @@ class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
                     response -> Log.d("api_request", response.code().toString())
                     Log.d("api_request_url::", response.raw().request.url.toString())
                     Log.d("get_user_api", response.code().toString() + " " + response.message())
+                    Log.e("12347", ""+ response.body()!!.items)
 
                     if (response.isSuccessful) {
                         if (response.code() == 200) {
                             response.body()?.code = response.code()
-                            Log.e("12345", "${response.body()}")
                             getGithubDataRepository.postValue((response.body()))
                         } else {
                             getGithubDataRepository.postValue(
@@ -37,10 +37,10 @@ class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
                 }
             } catch (e: ConnectException) {
                 e.printStackTrace()
-                Log.d("api_exception", e.toString())
+                Log.e("api_exception", e.toString())
             } catch (e : Exception) {
                 e.printStackTrace()
-                Log.d("api_exception", e.toString())
+                Log.e("api_exception", e.toString())
             }
         }
     }

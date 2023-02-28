@@ -32,11 +32,11 @@ class GithubAdapter(private val context : Context, var githubList : MutableList<
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is GithubListItemViewHolder) {
+        if (holder is GithubListItemViewHolder && position < mGithubList.size) {
             val itemViewHolder : GithubListItemViewHolder = holder as GithubListItemViewHolder
-            DLog.e("12345", ""+mGithubList)
+
             itemViewHolder.mItemView.setData(mGithubList, position)
-        } else if (holder is GithubListItemFooterViewHolder) {
+        } else if (holder is GithubListItemFooterViewHolder && position == mGithubList.size) {
             val itemViewHolder : GithubListItemFooterViewHolder = holder as GithubListItemFooterViewHolder
         }
     }

@@ -21,15 +21,13 @@ class GithubListItemView(context : Context) : ConstraintLayout(context) {
     }
 
     fun setData(githubList : MutableList<GithubResponse>, position : Int) {
-        val size = githubList[position].items.size-1
+        binding!!.repositoryItemConst1Txt1.text = githubList[position].items[position].full_name
+        binding!!.repositoryItemConst1Txt2.text = githubList[position].items[position].language
 
-        for (i in 0 .. size) {
-            binding!!.repositoryItemConst1Txt1.text = githubList[position].items[i].full_name
-            binding!!.repositoryItemConst1Txt2.text = githubList[position].items[i].language
-        }
+        DLog.e("12345",""+githubList[position].items[position].owner.avatarUrl)
 
         Glide.with(this)
-            .load(githubList)
+            .load(githubList[position].items[position].owner.avatarUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
             .error(R.drawable.icon_user)
             .fallback(R.drawable.icon_user)
