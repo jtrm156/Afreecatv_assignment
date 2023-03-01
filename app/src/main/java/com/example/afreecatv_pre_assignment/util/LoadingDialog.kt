@@ -16,7 +16,7 @@ class LoadingDialog(context: Context) : Dialog(context) {
         binding = DialogLoadingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setCanceledOnTouchOutside(false)
-        setCancelable(false)
+        setCancelable(true)
         window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window!!.setDimAmount(0.2f)
     }

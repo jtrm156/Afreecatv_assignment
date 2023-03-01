@@ -11,5 +11,19 @@ data class GithubResponse(
     val total_count: Int,
 ) {
     var code: Int = 0
+
+    data class Item (
+        @SerializedName("full_name")
+        val full_name: String,
+        @SerializedName("language")
+        val language: String,
+        @SerializedName("owner")
+        val owner : Owner
+    )
+
+    data class Owner(
+        @SerializedName("avatar_url")
+        val avatarUrl: String
+    )
 }
 

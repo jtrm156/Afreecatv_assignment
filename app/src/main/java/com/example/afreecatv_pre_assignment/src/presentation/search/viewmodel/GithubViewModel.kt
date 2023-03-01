@@ -19,7 +19,6 @@ class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
                     response -> Log.d("api_request", response.code().toString())
                     Log.d("api_request_url::", response.raw().request.url.toString())
                     Log.d("get_user_api", response.code().toString() + " " + response.message())
-                    Log.e("12347", ""+ response.body()!!.items)
 
                     if (response.isSuccessful) {
                         if (response.code() == 200) {

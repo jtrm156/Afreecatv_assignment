@@ -9,6 +9,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.afreecatv_pre_assignment.R
 import com.example.afreecatv_pre_assignment.databinding.ItemGithubListBinding
+import com.example.afreecatv_pre_assignment.src.data.model.remote.Data
 import com.example.afreecatv_pre_assignment.src.data.model.remote.GithubResponse
 import com.example.afreecatv_pre_assignment.util.DLog
 
@@ -20,14 +21,14 @@ class GithubListItemView(context : Context) : ConstraintLayout(context) {
         binding!!.root
     }
 
-    fun setData(githubList : MutableList<GithubResponse>, position : Int) {
-        binding!!.repositoryItemConst1Txt1.text = githubList[position].items[position].full_name
-        binding!!.repositoryItemConst1Txt2.text = githubList[position].items[position].language
+    fun setData(githubList : MutableList<Data>, position : Int) {
+        DLog.e("12347",""+position+"/"+githubList.size)
 
-        DLog.e("12345",""+githubList[position].items[position].owner.avatarUrl)
+        binding!!.repositoryItemConst1Txt1.text = githubList[position].fullName
+        binding!!.repositoryItemConst1Txt2.text = githubList[position].language
 
         Glide.with(this)
-            .load(githubList[position].items[position].owner.avatarUrl)
+            .load(githubList[position].avatarUrl)
             .transition(DrawableTransitionOptions.withCrossFade())
             .error(R.drawable.icon_user)
             .fallback(R.drawable.icon_user)
