@@ -24,6 +24,7 @@ class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
                         if (response.code() == 200) {
                             response.body()?.code = response.code()
                             getGithubDataRepository.postValue((response.body()))
+
                         } else {
                             getGithubDataRepository.postValue(
                                 GithubResponse(false, listOf(),0).apply {

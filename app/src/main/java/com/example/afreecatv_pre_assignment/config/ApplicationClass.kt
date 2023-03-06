@@ -32,22 +32,6 @@ class ApplicationClass : Application() {
 
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
-
-        @BindingAdapter("imageFromUrl")
-        @JvmStatic
-        fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
-            if(!imageUrl.isNullOrEmpty()) {
-                Glide.with(view.context)
-                    .load(imageUrl)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(view)
-            } else {
-                view.setImageDrawable(
-                    ContextCompat.getDrawable(view.context,
-                    R.drawable.icon_user
-                ))
-            }
-        }
     }
 
     // 앱이 처음 생성되는 순간, SP를 새로 만들어주고, 레트로핏 인스턴스를 생성합니다.

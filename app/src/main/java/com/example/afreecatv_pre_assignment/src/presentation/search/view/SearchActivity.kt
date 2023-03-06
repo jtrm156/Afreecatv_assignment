@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.afreecatv_pre_assignment.R
 import com.example.afreecatv_pre_assignment.config.BaseActivity
 import com.example.afreecatv_pre_assignment.databinding.ActivitySearchBinding
 import com.example.afreecatv_pre_assignment.src.data.model.GithubRepository
@@ -21,7 +22,7 @@ import com.example.afreecatv_pre_assignment.src.presentation.search.viewmodel.AP
 import com.example.afreecatv_pre_assignment.src.presentation.search.viewmodel.GithubViewModel
 import com.example.afreecatv_pre_assignment.util.DLog
 
-class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding::inflate){
+class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search){
     private var githubList = mutableListOf<GithubResponse>()
     private var data = mutableListOf<Data>()
 
@@ -124,7 +125,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(ActivitySearchBinding
 
             if (response.code != 200) {
                 Toast.makeText(this, "repository가 없습니다.",Toast.LENGTH_SHORT).show()
-            } else {val list = (binding.searchRecycle1.adapter as GithubAdapter).githubList
+            } else {
+                val list = (binding.searchRecycle1.adapter as GithubAdapter).githubList
                 if (isLoading) {
                     for (i in 0 until response.items.size) {
                         list.add(Data(response.items[i].full_name, response.items[i].owner.avatarUrl, response.items[i].language))
