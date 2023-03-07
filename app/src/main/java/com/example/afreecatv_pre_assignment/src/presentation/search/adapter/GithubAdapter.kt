@@ -33,13 +33,13 @@ class GithubAdapter(private val context : Context, var githubList : MutableList<
     }
 
     override fun getItemCount(): Int {
-        return githubList.size+1
+        return mGithubList.size+1
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is GithubListItemViewHolder) {
             val itemViewHolder : GithubListItemViewHolder = holder as GithubListItemViewHolder
-            itemViewHolder.mItemView.setData(githubList, position)
+            itemViewHolder.mItemView.setData(mGithubList, position)
         } else if (holder is GithubListItemFooterViewHolder) {
             val itemViewHolder : GithubListItemFooterViewHolder = holder as GithubListItemFooterViewHolder
         }

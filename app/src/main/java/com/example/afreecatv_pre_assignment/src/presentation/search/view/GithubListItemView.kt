@@ -34,8 +34,9 @@ class GithubListItemView(context : Context) : ConstraintLayout(context) {
     }
 
     fun setData(githubList : MutableList<Data>, position : Int) {
-        binding.model = githubList
-        DLog.e("12347",""+position+"/"+githubList.size)
+        (binding as ItemGithubListBinding?)!!.model = githubList[position]
+        //binding.model = githubList
+        //binding!!.executePendingBindings()
 
         /*
         binding!!.repositoryItemConst1Txt1.text = githubList[position].fullName

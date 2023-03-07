@@ -5,9 +5,10 @@
 
     <data>
         <import type="android.view.View"/>
+
         <variable
             name="model"
-            type="com.example.afreecatv_pre_assignment.src.presentation.search.viewmodel.GithubViewModel" />
+            type="com.example.afreecatv_pre_assignment.src.data.model.remote.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +28,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:srcCompat="@drawable/icon_user"
-                imageFromUrl="@{model.getGithubDataRepository.Owner[0].avatarUrl"
+                imageFromUrl="@{model.avatarUrl}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +42,7 @@
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toEndOf="@id/repository_item_const1_img1"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@{model.getGithubDataRepository.total_count"
+                android:text="@{model.fullName}"
                 android:textSize="12dp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
@@ -54,7 +55,7 @@
                 app:layout_constraintStart_toEndOf="@id/repository_item_const1_img1"
                 app:layout_constraintTop_toBottomOf="@id/repository_item_const1_txt1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:text="@{model.getGithubDataRepository.items.get(0).language"
+                android:text="@{model.language}"
                 android:textSize="10dp"
                 android:textColor="@color/gray"
                 android:layout_marginStart="5dp"

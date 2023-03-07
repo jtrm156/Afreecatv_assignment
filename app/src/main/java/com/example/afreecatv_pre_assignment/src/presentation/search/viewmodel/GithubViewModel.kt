@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.afreecatv_pre_assignment.src.data.model.GithubRepository
+import com.example.afreecatv_pre_assignment.src.data.model.remote.Data
 import com.example.afreecatv_pre_assignment.src.data.model.remote.GithubResponse
 import kotlinx.coroutines.launch
 import java.net.ConnectException
@@ -24,7 +25,6 @@ class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
                         if (response.code() == 200) {
                             response.body()?.code = response.code()
                             getGithubDataRepository.postValue((response.body()))
-
                         } else {
                             getGithubDataRepository.postValue(
                                 GithubResponse(false, listOf(),0).apply {
