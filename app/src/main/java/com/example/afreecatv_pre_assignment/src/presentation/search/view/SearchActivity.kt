@@ -6,6 +6,7 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowMetrics
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,10 @@ import com.example.afreecatv_pre_assignment.src.presentation.search.adapter.Gith
 import com.example.afreecatv_pre_assignment.src.presentation.search.viewmodel.APIViewModelFactory
 import com.example.afreecatv_pre_assignment.src.presentation.search.viewmodel.GithubViewModel
 import com.example.afreecatv_pre_assignment.util.DLog
+import dagger.hilt.android.AndroidEntryPoint
 
-class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search){
-    private var githubList = mutableListOf<GithubResponse>()
+@AndroidEntryPoint
+class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_search) {
     private var data = mutableListOf<Data>()
 
     private var page = 1
@@ -36,12 +38,13 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
 
     lateinit var viewModelFactory : APIViewModelFactory
     lateinit var githubViewModel : GithubViewModel
+    //private val githubViewModel by viewModels<GithubViewModel>()
     lateinit var githubAdapter : GithubAdapter
 
     private var mHeight : Int = 0
     private var mWidth : Int = 0
     private var isLoading = false
-    private var isPaging = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

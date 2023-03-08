@@ -7,8 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.afreecatv_pre_assignment.src.data.model.GithubRepository
 import com.example.afreecatv_pre_assignment.src.data.model.remote.Data
 import com.example.afreecatv_pre_assignment.src.data.model.remote.GithubResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.net.ConnectException
+import javax.inject.Inject
 
 class GithubViewModel(private val repository : GithubRepository) : ViewModel() {
     val getGithubDataRepository = MutableLiveData<GithubResponse>()
