@@ -99,7 +99,14 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
         binding.searchConst1Img1.setOnClickListener {
             showLoadingDialog(this)
             binding.searchRecycle1.visibility = View.VISIBLE
-            getUserData()
+            val list = (binding.searchRecycle1.adapter as GithubAdapter).githubList
+
+            if (list.size == 0) {
+                getUserData()
+            } else {
+                list.clear()
+                getUserData()
+            }
             isLoading = true
         }
 
